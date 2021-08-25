@@ -30,10 +30,12 @@ class PrototypesController < ApplicationController
 
   def edit
     
+    unless @prototype.user_id == current_user.id
+      redirect_to action: :index
+    end
   end
 
   def update
-    
     if @prototype.update(prototype_params)
       redirect_to prototype_path
     else
@@ -63,9 +65,7 @@ class PrototypesController < ApplicationController
 
 
   def move_to_index
-    if @prototype.user.name == current_user.name
-      render :edit
-    else
+    if @prototype.user.name != current_user.name
       redirect_to action: :index
     end
   end
