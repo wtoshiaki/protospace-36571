@@ -47,7 +47,7 @@
             <li class="comments_list">
               <% @comments.each do |comment| %>
                 <p>
-                  <%= link_to comment.user.name, user_path(@prototype.user), class: :comment_user %>
+                  <%= link_to comment.user.name, user_path(comment.user_id), class: :comment_user %>
                   <%= comment.text %>
                </p>
              <% end %>
